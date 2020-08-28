@@ -19,7 +19,7 @@ from django.urls import path, include
 from myapp import views as myapp_views
 from django.conf import settings
 from django.conf.urls.static import static
-
+ee
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', myapp_views.index, name='index'),
