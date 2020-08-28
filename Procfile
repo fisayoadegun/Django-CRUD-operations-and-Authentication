@@ -1,0 +1,1 @@
+web: gunicorn scoopsite.wsgi --log-file -

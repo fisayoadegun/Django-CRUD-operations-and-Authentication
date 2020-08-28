@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <meta charset="UTF-8">
+        <title>Hello World App</title>
+
+        {% load bootstrap4 %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale-1,
+            shrink-to-fit=no">
+        <title>Hello world app</title>
+        <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+        {% load static %}
+        <link href="{% static 'base/css/site.css'%}" rel="stylesheet">
+        {% bootstrap_css %}
+        {% bootstrap_javascript jquery='full' %}
+</head>
+<body>
+
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'index' %}">
+        MySite</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarCollapse" aria-controls="navbarCollapse"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li><a style="color:white" href="">Home</a></li>
+            <li class="nav-item"> <!-- here -->
+            <a class="nav-link" href="flowercreate/">
+            Create Flower
+            </a>
+            </li>
+        </ul>
+
+    </div>
+    <form action="/" method="get" class="form-inline mt-2 mt-md-0">
+        <input id="q" name="q" value="{{ request.GET.q }}"
+        class="form-control mr-sm-2" type="text" placeholder="Search..." aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</nav>
+<div id="content">
+</div>
+<main role="main" class="container">
+    <div class="starter-template">
+        {% block page_header %}{% endblock page_header %}
+    </div>
+</main>
+
+
+</body>
+</html>
+
+
+
+{% load bootstrap4 %}
+
+{% load i18n %}
+{% block content %}
+
+
+<h1>{% trans "Sign Out" %}</h1>
+
+<p>{% trans 'Are you sure you want to sign out?' %}</p>
+
+<form method="post" action="{% url 'account_logout' %}">
+  {% csrf_token %}
+
+  <button type="submit" class="btn btn-primary">{% trans 'Sign Out' %}</button>
+  <input type="hidden" name="next"
+           value="{% url 'account_login' %}" />
+</form>
+{% endblock content %}
+

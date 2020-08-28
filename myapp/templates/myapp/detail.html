@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<head>
+    <style>
+        img{
+        position:relative;
+        right:0;
+        border-radius:25px;
+        max-width:100%;
+        height:16rem;
+        object-fit: contain;
+        }
+    </style>
+</head>
+
+<div class="jumbotron">
+    <div class="container">
+        <img class="card-img-top" src="{{ flower.image_thumbnail.url }}"
+             alt="Card image cap">
+        <h1 class="display-3">{{ flower.title }}</h1>
+        <div class="lead">{{ flower.description }}</div>
+    </div>
+</div>
+<a href="/">Back<a>
+{% endblock %}
+

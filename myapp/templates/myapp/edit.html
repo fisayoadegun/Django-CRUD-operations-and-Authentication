@@ -1,0 +1,41 @@
+{% extends 'base/base.html' %}
+{% block content %}
+{% load widget_tweaks %}
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+</body>
+</html>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-1 col-xs-1 col-sm-1"></div>
+        <div class="col-md-10 col-xs-10 col-sm-10 ">
+            <br />
+            <h6 style="text-align:center;">
+                <font color="blue"> Update Flower</font>
+            </h6>
+        </div>
+        <div class="col-md-1 col-xs-1 col-sm-1">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1 col-xs-1 col-sm-1"></div>
+        <div class="col-md-10 col-xs-10 col-sm-10">
+            <form method="post" enctype="multipart/form-data" novalidate>
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+                    {% bootstrap_form form %}
+                    <button type="submit" class="btn btn-primary">Update</button>
+            </form>
+            <br>
+        </div>
+        <div class="col-md-1 col-xs-1 col-sm-1"></div>
+    </div>
+</div>
+{% endblock %}

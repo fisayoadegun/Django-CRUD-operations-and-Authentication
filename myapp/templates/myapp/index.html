@@ -1,0 +1,44 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<div class="album py-5">
+    <div class="container">
+        <div class="row">
+            {% for flower in flowers %}
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img class="card-img-top" src="{{ flower.image_thumbnail.url }}"
+                        alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title"><a href="{% url 'detail' flower.slug %}">{{ flower.title }}</a></h5>
+                                    <p class="card-text">{{ flower.description | truncatechars:100 }}</p>
+                                    <p>Category: <a href="#" class="card-link">{{ flower.category }}</a></p>
+                                    <p>Tags:</p>
+                                    {% for tag in flower.tags.all %}
+                                        <a href="{% url 'tags' tag.slug %}" class="card-link">{{ tag }}</a>
+                                    {% endfor %}
+                                    <div class="d-flex justify-content-between align-items-center">
+                                </div>
+                                <br>
+                                <div class="btn-group">
+                                <a href="{% url 'detail' flower.slug %}"  class="card-link">
+                                    <button style="color:black; font-size:0.6rem" type="button" class="btn btn-info">View</button>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+<!--<a href="{% url 'edit' pk=flower.pk %}" class="card-link">-->
+<!--                                   <button style="color:black; font-size:0.6rem" type="button" class="btn btn-light">Edit</button>-->
+<!--                                </a>-->
+<!--                                <a href="{% url 'delete' flower.pk %}" class="card-link" style="right:0;">-->
+<!--                                   <button style="color:black; font-size:0.6rem" type="button" class="btn btn-danger">Delete</button>-->
+<!--                                </a>-->

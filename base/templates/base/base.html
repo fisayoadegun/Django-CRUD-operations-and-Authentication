@@ -1,0 +1,78 @@
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <title>Flower App</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale-1,
+            shrink-to-fit=no">
+        <title>Flower App</title>
+
+        {% load static %}
+        <link href="{% static 'base/css/site.css'%}" rel="stylesheet">
+        {% bootstrap_css %}
+        {% bootstrap_javascript jquery='full' %}
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4 border">
+    <a class="navbar-brand" href="{% url 'index' %}">
+        MySite</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarCollapse" aria-controls="navbarCollapse"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto"></ul>
+    <ul class="navbar-nav ml-auto">
+        <ul>
+            <p style="left:0; color:white; font-size:0.8rem; padding:0; margin:0; font-family: 'Playball', cursive;">
+                <a class="nav-link" href="flowercreate/">Add New Flower</a>(Authorized Users Only)</p>
+        </ul>
+
+    <form action="/" method="get" class="form-inline mt-2 mt-md-0">
+        <input id="q" name="q" value="{{ request.GET.q }}"
+        class="form-control mr-sm-2" type="text" placeholder="Search..." aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+        {% if user.is_authenticated %}
+             <li class="nav-item">
+                 <span class="navbar-text">Hello, {{ user.username }}.</span>
+             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_logout' %}">Log out</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_change_password' %}">Change Password</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_login' %}">Log in</a></li>
+            {% endif %}
+        </ul>
+    </div>
+
+</nav>
+<div id="content">
+    {% block content %}{% endblock %}
+</div>
+<main role="main" class="container">
+    <div class="starter-template">
+        {% block page_header %}{% endblock page_header %}
+    </div>
+</main>
+<footer class="footer" style="position:relative;" >
+    <div class="container">
+        <span class="text-muted">
+            Base project for the <a target="_blank" href="https://leanpub.com/">"Django - The Easy way"
+        </a>book
+        </span>
+    </div>
+</footer>
+
+</body>
+</html>
+

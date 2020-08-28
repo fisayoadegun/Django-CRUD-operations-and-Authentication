@@ -1,0 +1,31 @@
+{% extends 'base/base.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="row"></div>
+    <br />
+    <div class="row">
+        <div class="col-md-2 col-xs-2 col-sm-2"></div>
+        <div class="col-md-10 col-xs-10 col-sm-10">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="alert alert-warning">
+                        Are you sure you want to delete {{ flower.title }}?
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-danger">
+                    <span class="glyphicon glyphicon-trash">Yes</span>
+                </button>
+                <span>or</span>
+                <a href="{% url 'index' %}">
+                    <button type="button" class="btn btn-info">
+                    <span class="glyphicon glyphicon-trash">No</span>
+                </button>
+                </a>
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
