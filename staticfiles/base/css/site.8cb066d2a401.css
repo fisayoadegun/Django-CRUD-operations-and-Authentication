@@ -1,0 +1,31 @@
+body {
+        padding-top: 0;
+        border:0;
+}
+.starter-template {
+    padding: 3rem 1.5rem;
+    text-align: center;
+}
+h1{
+    color:red;
+}
+
+footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color:#1A1A1A;
+   color: white;
+   text-align: center;
+   font-size:16px;
+   height:60px;
+   line-height:60px;
+}
+
+.form-account login{
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
