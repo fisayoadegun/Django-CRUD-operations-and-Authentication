@@ -100,8 +100,8 @@ DATABASES = {
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'fizzyflower',
-#         'USER': 'fisayo_admin',
+#         'NAME': 'lilies',
+#         'USER': 'postgres',
 #         'PASSWORD': 'Surulere007',
 #         'HOST': 'localhost',
 #         'PORT': '5432',
@@ -157,14 +157,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Heroku settings.
 import django_heroku
 django_heroku.settings(locals())
-
-if os.environ.get('DEBUG') == 'TRUE':
-    DEBUG = True
-elif os.environ.get('DEBUG') == 'FALSE':
-    DEBUG = False
-# Heroku: Update database configuration from $DATABASE_URL.
-import dj_database_url
-
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
 
