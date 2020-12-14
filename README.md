@@ -1,4 +1,4 @@
 # flowerapp
 
-Basic django CRUD functionalities 
+Basic django CRUD functionalities  & 
 Authentication
